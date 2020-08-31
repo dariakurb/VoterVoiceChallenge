@@ -20,13 +20,19 @@ public abstract class BasePage {
     @FindBy(linkText = "Logout")
     public WebElement logoutButton;
 
+    @FindBy(xpath = "(//div[@class='menu_center']//span)[2]")
+    public WebElement peopleButton;
+
+    @FindBy(linkText = "Manage Contacts")
+    public WebElement manageContacts;
+
     public void logout(){
         adminOptions.click();
         logoutButton.click();
     }
 
     public void verifyTitle(String pageName){
-        String actualTitle ="";
+        String actualTitle = Driver.getDriver().getTitle();
         String expectedTitle = "";
         switch (pageName.toLowerCase().replace(" ", "")){
             case "dashboard":
@@ -38,6 +44,8 @@ public abstract class BasePage {
                 actualTitle = Driver.getDriver().getTitle();
                 expectedTitle = "Login - VoterVoice Administrator Site";
                 break;
+            case "candidates":
+                expectedTitle = "Action Center";
         }
         assertEquals(expectedTitle, actualTitle);
     }

@@ -5,7 +5,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.votervoice.pages.DashboardPage;
 import net.votervoice.pages.LoginPage;
+import net.votervoice.utilities.BrowserUtils;
 import net.votervoice.utilities.ConfigurationReader;
+import net.votervoice.utilities.Driver;
 
 
 public class LoginStepDefs {
@@ -42,6 +44,7 @@ public class LoginStepDefs {
 
     @When("I click login button")
     public void i_click_login_button() {
+        BrowserUtils.highlightElement(Driver.getDriver(), loginPage.loginButton);
         loginPage.loginButton.click();
     }
 

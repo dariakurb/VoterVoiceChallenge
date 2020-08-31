@@ -45,9 +45,11 @@ public class LoginPage {
         switch (fieldName.toLowerCase()){
             case "username":
                 username.sendKeys(input);
+                BrowserUtils.highlightElement(Driver.getDriver(), username);
                 break;
             case "password":
                 password.sendKeys(input);
+                BrowserUtils.highlightElement(Driver.getDriver(), password);
                 break;
         }
     }
@@ -56,18 +58,23 @@ public class LoginPage {
         switch (errorType.toLowerCase()){
             case "username/password combination":
                 BrowserUtils.waitForTextToBePresentInElement(invalidCredErrorMessage, "Invalid UserName/Password Combination");
+                BrowserUtils.highlightElement(Driver.getDriver(), invalidCredErrorMessage);
                 assertEquals("Invalid UserName/Password Combination" ,invalidCredErrorMessage.getText());
                 break;
             case "username":
                 BrowserUtils.waitForTextToBePresentInElement(usernameError, "* Require User Name");
+                BrowserUtils.highlightElement(Driver.getDriver(), usernameError);
                 assertEquals("* Require User Name" , usernameError.getText());
                 break;
             case "password":
                 BrowserUtils.waitForTextToBePresentInElement(passwordError, "* Require Password");
+                BrowserUtils.highlightElement(Driver.getDriver(), passwordError);
                 assertEquals("* Require Password" ,passwordError.getText());
                 break;
             case "username/password":
                 BrowserUtils.waitForTextToBePresentInElement(passwordError, "* Require Password");
+                BrowserUtils.highlightElement(Driver.getDriver(), usernameError);
+                BrowserUtils.highlightElement(Driver.getDriver(), passwordError);
                 assertEquals("* Require User Name" ,usernameError.getText());
                 assertEquals("* Require Password" ,passwordError.getText());
                 break;

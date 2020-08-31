@@ -6,6 +6,7 @@
 
    @positive
    Scenario: A user with valid login credentials is able to log into and out of their account.
+     Given I am on the login page
      When I login with valid credentials
      Then Dashboard page should be displayed
      And I log out
